@@ -16,6 +16,8 @@ import { mainListItems } from "./NavListItems";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
+import { Link } from "react-router-dom";
+
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -89,16 +91,20 @@ const Navbar = ({ children }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            sx={{ flexGrow: 1 }}
-          >
-            Dashboard
-          </Typography>
-          <Button sx={{ ml: "auto" }}>Login</Button>
+          <Link to="/">
+            <Typography
+              component="h1"
+              variant="h6"
+              color="white"
+              noWrap
+              sx={{ flexGrow: 1 }}
+            >
+              Dashboard
+            </Typography>
+          </Link>
+          <Button variant="contained" sx={{ ml: "auto" }}>
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

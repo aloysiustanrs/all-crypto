@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Home from "./components/Home/Home";
+import { Routes, Route } from "react-router-dom";
 
 const darkTheme = createTheme({
   palette: {
@@ -14,7 +15,10 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <div className="App">
         <Navbar>
-          <Home />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cryptocurrency" element={<Home />} />
+          </Routes>
         </Navbar>
       </div>
     </ThemeProvider>
