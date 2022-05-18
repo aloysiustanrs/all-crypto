@@ -10,7 +10,12 @@ const Footer = () => {
       variant="caption"
       display="block"
       gutterBottom
-      sx={{ textAlign: "center", color: "#71747a", marginY: 4 }}
+      sx={{
+        textAlign: "center",
+        color: "#71747a",
+        marginY: 4,
+        userSelect: "none",
+      }}
     >
       © {year} Aloysius Tan All Rights Reserved.
     </Typography>
