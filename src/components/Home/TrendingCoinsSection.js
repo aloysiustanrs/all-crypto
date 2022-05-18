@@ -1,8 +1,9 @@
 import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { Button, Link } from "@mui/material";
+import { Box, Button, Link } from "@mui/material";
 import { Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const TrendingCoinsSection = ({ trendingCoins }) => {
   const responsive = {
@@ -16,8 +17,19 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
       items: 4,
     },
   };
+  console.log(trendingCoins);
 
   const items = trendingCoins.map((coin) => {
+    let coinPercentageChange = coin.price_change_percentage_24h;
+    let color = "";
+    if (coinPercentageChange > 0) {
+      color = "#93E318";
+    } else if (coinPercentageChange < 0) {
+      color = "#FE4017";
+    } else {
+      color = "white";
+    }
+
     return (
       <>
         <Link
@@ -32,21 +44,27 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
             color: "white",
           }}
         >
+          <Typography
+            variant="body1"
+            sx={{
+              marginBottom: 4,
+            }}
+          >
+            {coin.market_cap_rank}
+          </Typography>
           <img
-            src={coin.large}
+            src={coin.image}
             alt={coin.name}
             height="80"
             style={{ marginBottom: 10 }}
           />
-          <Typography
-            variant="h6"
-            sx={{ marginTop: 4 }}
-            gutterBottom
-            component="div"
-          >
-            {coin.name}
+
+          <Typography variant="h6" sx={{ marginTop: 2 }}>
+            {`${coin.symbol}`.toUpperCase()}
           </Typography>
-          <span style={{ fontSize: 22, fontWeight: 500 }}></span>
+          <Typography variant="subtitle2" sx={{ marginTop: 2, color: color }}>
+            {coin.price_change_percentage_24h} %
+          </Typography>
         </Link>
       </>
     );
@@ -62,7 +80,7 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
         mb={10}
         sx={{ textAlign: "center" }}
       >
-        Top 7 trending search cryptocurrency coins in the last 24 hours
+        Top 10 Cryptocurrency by Market Cap
       </Typography>
       <AliceCarousel
         mouseTracking
@@ -75,9 +93,7 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
         items={items}
         autoPlay
       />
-      <Button
-        variant="outlined"
-        size="medium"
+      <Box
         sx={{
           marginTop: 12,
           marginBottom: 3,
@@ -85,8 +101,12 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
           marginX: "auto",
         }}
       >
-        See all coins
-      </Button>
+        <RouterLink to="/cryptocurrency">
+          <Button variant="outlined" size="medium">
+            See all coins
+          </Button>
+        </RouterLink>
+      </Box>
     </div>
   );
 };

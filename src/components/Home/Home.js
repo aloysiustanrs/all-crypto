@@ -22,15 +22,7 @@ const Home = () => {
   const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins());
 
-    setTrendingCoins([
-      data.coins[0].item,
-      data.coins[1].item,
-      data.coins[2].item,
-      data.coins[3].item,
-      data.coins[4].item,
-      data.coins[5].item,
-      data.coins[6].item,
-    ]);
+    setTrendingCoins(data);
   };
 
   const fetchGlobalStats = async () => {

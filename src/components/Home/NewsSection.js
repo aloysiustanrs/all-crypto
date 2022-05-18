@@ -28,8 +28,6 @@ const News = () => {
     fetchNewsData();
   }, []);
 
-  console.log(news);
-
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Typography
@@ -121,9 +119,9 @@ const News = () => {
           marginX: "auto",
         }}
       >
-        <RouterLink to="/cryptocurrency">
+        <RouterLink to="/news">
           <Button variant="outlined" size="medium">
-            See all coins
+            See all news
           </Button>
         </RouterLink>
       </Box>
