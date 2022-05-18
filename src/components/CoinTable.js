@@ -30,18 +30,17 @@ const CoinTable = () => {
     );
   };
 
-  const axios = require("axios");
-
-  const fetchCoinList = async () => {
-    setLoading(true);
-    const { data } = await axios.get(CoinList());
-    setCoins(data);
-    setLoading(false);
-  };
-
   console.log(coins);
 
   useEffect(() => {
+    const axios = require("axios");
+
+    const fetchCoinList = async () => {
+      setLoading(true);
+      const { data } = await axios.get(CoinList());
+      setCoins(data);
+      setLoading(false);
+    };
     fetchCoinList();
   }, []);
   return (
