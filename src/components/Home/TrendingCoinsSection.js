@@ -4,6 +4,7 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { Box, Button, Link } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import millify from "millify";
 
 const TrendingCoinsSection = ({ trendingCoins }) => {
   const responsive = {
@@ -63,7 +64,10 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
             {`${coin.symbol}`.toUpperCase()}
           </Typography>
           <Typography variant="subtitle2" sx={{ marginTop: 2, color: color }}>
-            {coin.price_change_percentage_24h} %
+            {millify(`${coin.price_change_percentage_24h}`, {
+              precision: 2,
+            })}{" "}
+            %
           </Typography>
         </Link>
       </>
