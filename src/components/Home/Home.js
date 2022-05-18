@@ -11,6 +11,7 @@ import Paper from "@mui/material/Paper";
 import TrendingCoinsSection from "./TrendingCoinsSection";
 import HomeStats from "./HomeStats";
 import News from "./NewsSection";
+import Footer from "../Footer";
 
 const axios = require("axios").default;
 
@@ -89,6 +90,8 @@ const Home = () => {
           </Grid>
         </Grid>
       </Container>
+
+      <Footer />
     </>
   );
 };
