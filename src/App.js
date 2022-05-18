@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Home from "./components/Home/Home";
 import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer";
+import CoinTable from "./components/CoinTable";
 
 const darkTheme = createTheme({
   palette: {
@@ -16,8 +18,24 @@ function App() {
       <div className="App">
         <Navbar>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cryptocurrency" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <Home />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/cryptocurrency"
+              element={
+                <>
+                  <CoinTable />
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
         </Navbar>
       </div>

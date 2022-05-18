@@ -18,7 +18,6 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
       items: 4,
     },
   };
-  console.log(trendingCoins);
 
   const items = trendingCoins.map((coin) => {
     let coinPercentageChange = coin.price_change_percentage_24h;

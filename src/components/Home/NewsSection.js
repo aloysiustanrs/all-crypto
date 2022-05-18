@@ -1,6 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link, Typography, Grid, Card, Button, Box } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+
+const NewsCard = styled(Card)(({ theme }) => ({
+  padding: theme.spacing(3),
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+
+  [theme.breakpoints.up("lg")]: {
+    height: "180px",
+  },
+
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+}));
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -41,74 +60,59 @@ const News = () => {
         Top 3 Cryptocurrency News
       </Typography>
 
-      <Grid container spacing={3} sx={{ marginBottom: 6, paddingX: 5 }}>
+      <Grid container spacing={3} sx={{ marginBottom: 6, paddingX: 1 }}>
         <Grid item xs={12} lg={4}>
           <Link href={news[0]?.url}>
-            <Card
-              variant="outlined"
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "top",
-                padding: 5,
-                maxHeight: "200px",
-              }}
-            >
-              <Typography variant="body2" sx={{ padding: 1 }}>
+            <NewsCard variant="outlined">
+              <Typography variant="body2" sx={{ padding: 1, fontSize: "13px" }}>
                 {news[0]?.name}
               </Typography>
               <img
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                  maxHeight: "100px",
+                  maxWidth: "100px",
+                }}
                 src={news[0]?.image?.thumbnail?.contentUrl}
                 alt={news[0]?.name}
               />
-            </Card>
+            </NewsCard>
           </Link>
         </Grid>
         <Grid item xs={12} lg={4}>
           <Link href={news[1]?.url}>
-            <Card
-              variant="outlined"
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "top",
-                padding: 5,
-                maxHeight: "200px",
-              }}
-            >
-              <Typography variant="body2" sx={{ padding: 1 }}>
+            <NewsCard variant="outlined">
+              <Typography variant="body2" sx={{ padding: 1, fontSize: "13px" }}>
                 {news[1]?.name}
               </Typography>
               <img
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                  maxHeight: "100px",
+                  maxWidth: "100px",
+                }}
                 src={news[1]?.image?.thumbnail?.contentUrl}
                 alt={news[1]?.name}
               />
-            </Card>
+            </NewsCard>
           </Link>
         </Grid>
         <Grid item xs={12} lg={4}>
           <Link href={news[2]?.url}>
-            <Card
-              variant="outlined"
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "top",
-                padding: 5,
-                maxHeight: "200px",
-              }}
-            >
-              <Typography variant="body2" sx={{ padding: 1 }}>
+            <NewsCard variant="outlined">
+              <Typography variant="body2" sx={{ padding: 1, fontSize: "13px" }}>
                 {news[2]?.name}
               </Typography>
               <img
-                style={{ objectFit: "cover" }}
+                style={{
+                  objectFit: "cover",
+                  maxHeight: "100px",
+                  maxWidth: "100px",
+                }}
                 src={news[2]?.image?.thumbnail?.contentUrl}
                 alt={news[2]?.name}
               />
-            </Card>
+            </NewsCard>
           </Link>
         </Grid>
       </Grid>

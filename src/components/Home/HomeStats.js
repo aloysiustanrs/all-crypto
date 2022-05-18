@@ -31,7 +31,7 @@ const HomeStats = ({ stats }) => {
               Total Market Cap:
             </Typography>
             <Typography variant="h6">
-              ${" "}
+              $&nbsp;
               {millify(`${stats.total_market_cap.usd}`, {
                 precision: 2,
               })}
@@ -54,7 +54,7 @@ const HomeStats = ({ stats }) => {
               Total 24 Hour Volume:
             </Typography>
             <Typography variant="h6">
-              ${" "}
+              $&nbsp;
               {millify(`${stats.total_volume.usd}`, {
                 precision: 2,
               })}
@@ -69,8 +69,8 @@ const HomeStats = ({ stats }) => {
             <Typography variant="h6" sx={{ color: color }}>
               {millify(`${stats.market_cap_change_percentage_24h_usd}`, {
                 precision: 2,
-              })}{" "}
-              %
+              })}
+              &nbsp; %
             </Typography>
           </StatCard>
         </Grid>

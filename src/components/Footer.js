@@ -2,21 +2,18 @@ import React from "react";
 import { Typography } from "@mui/material";
 
 const Footer = () => {
-  const date = new Date();
-  const year = date.getFullYear;
-  console.log(year);
+  const d = new Date();
+  let year = d.getFullYear();
 
   return (
-    <div>
-      <Typography
-        variant="overline"
-        display="block"
-        gutterBottom
-        sx={{ textAlign: "center" }}
-      >
-        overline text
-      </Typography>
-    </div>
+    <Typography
+      variant="caption"
+      display="block"
+      gutterBottom
+      sx={{ textAlign: "center", color: "#71747a", marginY: 4 }}
+    >
+      © {year} Aloysius Tan All Rights Reserved.
+    </Typography>
   );
 };
 

@@ -11,9 +11,21 @@ import Paper from "@mui/material/Paper";
 import TrendingCoinsSection from "./TrendingCoinsSection";
 import HomeStats from "./HomeStats";
 import News from "./NewsSection";
-import Footer from "../Footer";
+import { styled } from "@mui/material/styles";
 
 const axios = require("axios").default;
+
+const BoxForHomeAndSwitch = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: "40px",
+  marginBottom: "40px",
+
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
 
 const Home = () => {
   const [trendingCoins, setTrendingCoins] = useState([]);
@@ -40,17 +52,8 @@ const Home = () => {
   return (
     <>
       <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginBottom: 3,
-          }}
-        >
-          <Typography variant="h4" gutterBottom component="div">
-            Home
-          </Typography>
+        <BoxForHomeAndSwitch>
+          <Typography variant="h4">Home</Typography>
           <FormControlLabel
             control={
               <Switch
@@ -61,7 +64,7 @@ const Home = () => {
             }
             label="Show Global Stats"
           />
-        </Box>
+        </BoxForHomeAndSwitch>
         {toggleShowStats && <HomeStats stats={stats} />}
         <Grid container spacing={3}>
           {/* Trending Coins */}
@@ -90,8 +93,6 @@ const Home = () => {
           </Grid>
         </Grid>
       </Container>
-
-      <Footer />
     </>
   );
 };
