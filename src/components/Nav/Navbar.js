@@ -99,7 +99,7 @@ const Navbar = ({ children }) => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Crypto Daily
             </Typography>
           </Link>
           <Button variant="contained" sx={{ ml: "auto" }}>
