@@ -1,10 +1,11 @@
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Nav/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Home from "./components/Home/Home";
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer";
-import CoinTable from "./components/CoinTable";
+import CoinTable from "./components/Table/CoinTable";
+import CoinPage from "./components/CoinPage/CoinInfo";
 
 const darkTheme = createTheme({
   palette: {
@@ -32,6 +33,15 @@ function App() {
               element={
                 <>
                   <CoinTable />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="/coins/:id"
+              element={
+                <>
+                  <CoinPage />
                   <Footer />
                 </>
               }

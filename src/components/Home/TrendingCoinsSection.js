@@ -4,9 +4,12 @@ import "react-alice-carousel/lib/alice-carousel.css";
 import { Box, Button, Link } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import millify from "millify";
 
 const TrendingCoinsSection = ({ trendingCoins }) => {
+  let navigate = useNavigate();
+
   const responsive = {
     0: {
       items: 2,
@@ -20,6 +23,9 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
   };
 
   const items = trendingCoins.map((coin) => {
+    function goToCoinPage() {
+      navigate(`/coins/${coin?.id}`);
+    }
     let coinPercentageChange = coin.price_change_percentage_24h;
     let color = "";
     if (coinPercentageChange > 0) {
@@ -33,7 +39,7 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
     return (
       <>
         <Link
-          to={`/coins/${coin.id}`}
+          onClick={goToCoinPage}
           sx={{
             textAlign: "center",
             display: "flex",
@@ -42,6 +48,7 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
             flexDirection: "column",
             textDecoration: "none",
             color: "white",
+            cursor: "pointer",
           }}
         >
           <Typography

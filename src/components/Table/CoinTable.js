@@ -13,8 +13,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { CoinList } from "../config/api";
+import { CoinList } from "../../config/api";
 import { comma, toFixed } from "number-magic";
+import { useNavigate } from "react-router-dom";
 
 const CoinTable = () => {
   const [coins, setCoins] = useState([]);
@@ -30,7 +31,7 @@ const CoinTable = () => {
     );
   };
 
-  console.log(coins);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const axios = require("axios");
@@ -77,8 +78,16 @@ const CoinTable = () => {
                   const positive =
                     coin.price_change_percentage_24h_in_currency > 0;
 
+                  function goToCoinPage() {
+                    navigate(`/coins/${coin?.id}`);
+                  }
+
                   return (
-                    <TableRow key={coin.name}>
+                    <TableRow
+                      key={coin.name}
+                      onClick={goToCoinPage}
+                      sx={{ cursor: "pointer" }}
+                    >
                       <TableCell align="center">
                         {coin.market_cap_rank}
                       </TableCell>
