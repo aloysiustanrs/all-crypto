@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { HistoricalChart } from "../../config/api";
+import "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js/auto";
 import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { chartDays } from "../../config/data";
 
