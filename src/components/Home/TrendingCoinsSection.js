@@ -1,13 +1,13 @@
 import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { Box, Button, Link } from "@mui/material";
+import { Box, Button, Link, CircularProgress } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import millify from "millify";
 
-const TrendingCoinsSection = ({ trendingCoins }) => {
+const TrendingCoinsSection = ({ trendingCoins, loading }) => {
   let navigate = useNavigate();
 
   const responsive = {
@@ -81,43 +81,51 @@ const TrendingCoinsSection = ({ trendingCoins }) => {
   });
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <Typography
-        variant="h6"
-        gutterBottom
-        component="div"
-        mt={5}
-        mb={10}
-        sx={{ textAlign: "center" }}
-      >
-        Top 10 Cryptocurrency by Market Cap
-      </Typography>
-      <AliceCarousel
-        mouseTracking
-        infinite
-        autoPlayInterval={200}
-        animationDuration={1500}
-        disableDotsControls
-        disableButtonsControls
-        responsive={responsive}
-        items={items}
-        autoPlay
-      />
-      <Box
-        sx={{
-          marginTop: 12,
-          marginBottom: 3,
-          maxWidth: "200px",
-          marginX: "auto",
-        }}
-      >
-        <RouterLink to="/cryptocurrency">
-          <Button variant="outlined" size="medium">
-            See all coins
-          </Button>
-        </RouterLink>
-      </Box>
-    </div>
+    <>
+      {loading ? (
+        <Box sx={{ textAlign: "center" }}>
+          <CircularProgress />
+        </Box>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <Typography
+            variant="h6"
+            gutterBottom
+            component="div"
+            mt={5}
+            mb={10}
+            sx={{ textAlign: "center" }}
+          >
+            Top 10 Cryptocurrency by Market Cap
+          </Typography>
+          <AliceCarousel
+            mouseTracking
+            infinite
+            autoPlayInterval={200}
+            animationDuration={1500}
+            disableDotsControls
+            disableButtonsControls
+            responsive={responsive}
+            items={items}
+            autoPlay
+          />
+          <Box
+            sx={{
+              marginTop: 12,
+              marginBottom: 3,
+              maxWidth: "200px",
+              marginX: "auto",
+            }}
+          >
+            <RouterLink to="/cryptocurrency">
+              <Button variant="outlined" size="medium">
+                See all coins
+              </Button>
+            </RouterLink>
+          </Box>
+        </div>
+      )}
+    </>
   );
 };
 

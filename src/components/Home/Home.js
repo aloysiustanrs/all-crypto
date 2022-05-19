@@ -31,11 +31,13 @@ const Home = () => {
   const [trendingCoins, setTrendingCoins] = useState([]);
   const [stats, setStats] = useState([]);
   const [toggleShowStats, setToggleShowStats] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchTrendingCoins = async () => {
+    setLoading(true);
     const { data } = await axios.get(TrendingCoins());
-
     setTrendingCoins(data);
+    setLoading(false);
   };
 
   const fetchGlobalStats = async () => {
@@ -76,7 +78,10 @@ const Home = () => {
                 flexDirection: "column",
               }}
             >
-              <TrendingCoinsSection trendingCoins={trendingCoins} />
+              <TrendingCoinsSection
+                trendingCoins={trendingCoins}
+                loading={loading}
+              />
             </Paper>
           </Grid>
           {/* News */}
