@@ -24,32 +24,11 @@ const NewsCard = styled(Card)(({ theme }) => ({
 const News = () => {
   const [news, setNews] = useState([]);
 
-  useEffect(() => {
-    const axios = require("axios");
-
-    const options = {
-      method: "GET",
-      url: "https://bing-news-search1.p.rapidapi.com/news/search?q=cryptocurrency&count=3",
-      params: { safeSearch: "Off", textFormat: "Raw" },
-      headers: {
-        "X-BingApis-SDK": "true",
-        "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
-        "X-RapidAPI-Key": "6fe370c524mshfddc561441e0256p1d491bjsn85ea234a7eea",
-      },
-    };
-
-    const fetchNewsData = async () => {
-      await axios.request(options).then(({ data }) => {
-        setNews([data.value[0], data.value[1], data.value[2]]);
-      });
-    };
-
-    fetchNewsData();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Typography
+      {/* <Typography
         variant="h6"
         gutterBottom
         component="div"
@@ -128,7 +107,7 @@ const News = () => {
             See all news
           </Button>
         </RouterLink>
-      </Box>
+      </Box> */}
     </div>
   );
 };
