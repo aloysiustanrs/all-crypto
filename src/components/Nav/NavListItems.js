@@ -27,13 +27,5 @@ export const mainListItems = (
         <ListItemText primary="Cryptocurrency" sx={{ color: "white" }} />
       </ListItemButton>
     </Link>
-    <Link to="/news">
-      <ListItemButton>
-        <ListItemIcon>
-          <NewspaperIcon />
-        </ListItemIcon>
-        <ListItemText primary="News" sx={{ color: "white" }} />
-      </ListItemButton>
-    </Link>
   </>
 );

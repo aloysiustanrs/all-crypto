@@ -10,7 +10,6 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import TrendingCoinsSection from "./TrendingCoinsSection";
 import HomeStats from "./HomeStats";
-import News from "./NewsSection";
 import { styled } from "@mui/material/styles";
 
 const axios = require("axios").default;
@@ -83,16 +82,6 @@ const Home = () => {
                 loading={loading}
               />
             </Paper>
-          </Grid>
-          {/* News */}
-          <Grid item xs={12} md={12} lg={12}>
-            <Paper
-              sx={{
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-              }}
-            ></Paper>
           </Grid>
         </Grid>
       </Container>
