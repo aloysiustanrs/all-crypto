@@ -8,7 +8,7 @@ import { chartDays } from "../../config/data";
 const CoinChart = ({ id }) => {
   const [historicalData, setHistoricalData] = useState([]);
   const [days, setDays] = useState(1);
-  const [alignment, setAlignment] = React.useState("left");
+  const [alignment, setAlignment] = React.useState(chartDays[0].value);
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
