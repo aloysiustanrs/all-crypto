@@ -28,7 +28,7 @@ const News = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {/* <Typography
+      <Typography
         variant="h6"
         gutterBottom
         component="div"
@@ -38,7 +38,6 @@ const News = () => {
       >
         Top 3 Cryptocurrency News
       </Typography>
-
       <Grid container spacing={3} sx={{ marginBottom: 6, paddingX: 1 }}>
         <Grid item xs={12} lg={4}>
           <Link href={news[0]?.url}>
@@ -107,7 +106,7 @@ const News = () => {
             See all news
           </Button>
         </RouterLink>
-      </Box> */}
+      </Box>
     </div>
   );
 };

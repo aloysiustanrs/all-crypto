@@ -92,9 +92,7 @@ const Home = () => {
                 display: "flex",
                 flexDirection: "column",
               }}
-            >
-              <News />
-            </Paper>
+            ></Paper>
           </Grid>
         </Grid>
       </Container>
