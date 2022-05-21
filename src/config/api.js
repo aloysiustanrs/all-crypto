@@ -15,4 +15,4 @@ export const GlobalStats = () => `https://api.coingecko.com/api/v3/global`;
 export const ExchangesList = () => `https://api.coingecko.com/api/v3/exchanges`;
 
 export const NewsList = () =>
-  `https://newsapi.org/v2/everything?q=crypto&apiKey=${process.env.REACT_APP_NAME}`;
+  `https://newsapi.org/v2/everything?q=crypto&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`;
