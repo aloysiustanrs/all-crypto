@@ -10,6 +10,8 @@ import CoinPage from "./components/CoinPage/CoinInfo";
 import { DataContext } from "./contexts/DataContext";
 import Exchanges from "./components/ExchangesPage/Exchanges";
 import { CoinList } from "./config/api";
+import { NewsList } from "./config/api";
+import NewsInfo from "./components/NewsPage/NewsInfo";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,25 +22,39 @@ const darkTheme = createTheme({
 function App() {
   //Get Coins and pass to children using Context API
   const [coins, setCoins] = useState([]);
+  const [news, setNews] = useState([]);
   const [coinTableLoading, setCoinTableLoading] = useState(false);
+  const [newsDataLoading, setNewsDataLoading] = useState(false);
 
   const axios = require("axios");
 
   const fetchCoinList = async () => {
     setCoinTableLoading(true);
     const { data } = await axios.get(CoinList());
+
     setCoins(data);
     setCoinTableLoading(false);
   };
 
+  const fetchNewsList = async () => {
+    setNewsDataLoading(true);
+    const { data } = await axios.get(NewsList());
+
+    setNews(data.articles);
+    setNewsDataLoading(false);
+  };
+
   useEffect(() => {
     fetchCoinList();
+    fetchNewsList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <ThemeProvider theme={darkTheme}>
-      <DataContext.Provider value={{ coins, setCoins, coinTableLoading }}>
+      <DataContext.Provider
+        value={{ coins, coinTableLoading, news, newsDataLoading }}
+      >
         <div className="App">
           <Navbar>
             <Routes>
@@ -74,6 +90,15 @@ function App() {
                 element={
                   <>
                     <CoinPage />
+                    <Footer />
+                  </>
+                }
+              />
+              <Route
+                path="/news"
+                element={
+                  <>
+                    <NewsInfo />
                     <Footer />
                   </>
                 }

@@ -24,8 +24,6 @@ const CoinTable = () => {
 
   const { coins, coinTableLoading } = useContext(DataContext);
 
-  console.log(coins);
-
   let navigate = useNavigate();
 
   const handleSearch = () => {

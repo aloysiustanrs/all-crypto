@@ -5,6 +5,7 @@ import ListItemText from "@mui/material/ListItemText";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import HomeIcon from "@mui/icons-material/Home";
 import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
 
 import { Link } from "react-router-dom";
 
@@ -32,6 +33,14 @@ export const mainListItems = (
           <SwapHorizIcon />
         </ListItemIcon>
         <ListItemText primary="Exchanges" sx={{ color: "white" }} />
+      </ListItemButton>
+    </Link>
+    <Link to="/news">
+      <ListItemButton>
+        <ListItemIcon>
+          <NewspaperIcon />
+        </ListItemIcon>
+        <ListItemText primary="News" sx={{ color: "white" }} />
       </ListItemButton>
     </Link>
   </>
