@@ -12,16 +12,21 @@ import {
   Stack,
   CircularProgress,
 } from "@mui/material";
-import React, { useState, useEffect } from "react";
-import { CoinList } from "../../config/api";
+import React, { useState, useContext } from "react";
+
 import { comma, toFixed } from "number-magic";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../contexts/DataContext";
 
 const CoinTable = () => {
-  const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+
+  const { coins, coinTableLoading } = useContext(DataContext);
+
+  console.log(coins);
+
+  let navigate = useNavigate();
 
   const handleSearch = () => {
     return coins.filter(
@@ -31,19 +36,6 @@ const CoinTable = () => {
     );
   };
 
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    const axios = require("axios");
-
-    const fetchCoinList = async () => {
-      setLoading(true);
-      const { data } = await axios.get(CoinList());
-      setCoins(data);
-      setLoading(false);
-    };
-    fetchCoinList();
-  }, []);
   return (
     <Container sx={{ textAlign: "center" }}>
       <Typography variant="h4" sx={{ mt: 4 }}>
@@ -55,7 +47,7 @@ const CoinTable = () => {
         sx={{ marginTop: 6, marginBottom: 6, width: "100%" }}
         onChange={(e) => setSearch(e.target.value)}
       />
-      {loading ? (
+      {coinTableLoading ? (
         <CircularProgress />
       ) : (
         <TableContainer>
@@ -65,10 +57,10 @@ const CoinTable = () => {
                 <TableCell align="center">Rank</TableCell>
                 <TableCell>Coin</TableCell>
                 <TableCell align="right">Price</TableCell>
-                <TableCell align="right">24h %</TableCell>
-                <TableCell align="right">7d %</TableCell>
-                <TableCell align="right">Market Cap</TableCell>
-                <TableCell align="right">Volume (24h)</TableCell>
+                <TableCell align="right">24h&nbsp;%</TableCell>
+                <TableCell align="right">7d&nbsp;%</TableCell>
+                <TableCell align="right">Market&nbsp;Cap</TableCell>
+                <TableCell align="right">Volume&nbsp;(24h)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
