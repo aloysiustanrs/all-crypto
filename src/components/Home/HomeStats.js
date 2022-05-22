@@ -14,9 +14,9 @@ const StatCard = styled(Card)`
 const HomeStats = ({ stats }) => {
   let coinPercentageChange = stats.total_volume.usd;
   let color = "";
-  if (coinPercentageChange < 0) {
+  if (coinPercentageChange > 0) {
     color = "#93E318";
-  } else if (coinPercentageChange > 0) {
+  } else if (coinPercentageChange < 0) {
     color = "#FE4017";
   } else {
     color = "white";

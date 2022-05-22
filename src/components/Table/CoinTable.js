@@ -35,7 +35,7 @@ const CoinTable = () => {
   };
 
   return (
-    <Container sx={{ textAlign: "center" }}>
+    <Container maxWidth="xl" sx={{ textAlign: "center" }}>
       <Typography variant="h4" sx={{ mt: 4 }}>
         Cryptocurrency Prices by Market Cap
       </Typography>
@@ -65,8 +65,11 @@ const CoinTable = () => {
               {handleSearch()
                 .slice((page - 1) * 10, (page - 1) * 10 + 10)
                 .map((coin) => {
-                  const positive =
+                  const positive24h =
                     coin.price_change_percentage_24h_in_currency > 0;
+
+                  const positive7d =
+                    coin.price_change_percentage_7d_in_currency > 0;
 
                   function goToCoinPage() {
                     navigate(`/coins/${coin?.id}`);
@@ -102,7 +105,7 @@ const CoinTable = () => {
                       </TableCell>
                       <TableCell
                         align="right"
-                        sx={{ color: positive > 0 ? "#93E318" : "#FE4017" }}
+                        sx={{ color: positive24h > 0 ? "#93E318" : "#FE4017" }}
                       >
                         {toFixed(
                           `${coin.price_change_percentage_24h_in_currency}`
@@ -111,7 +114,7 @@ const CoinTable = () => {
                       </TableCell>
                       <TableCell
                         align="right"
-                        sx={{ color: positive > 0 ? "#93E318" : "#FE4017" }}
+                        sx={{ color: positive7d > 0 ? "#93E318" : "#FE4017" }}
                       >
                         {toFixed(
                           `${coin.price_change_percentage_7d_in_currency}`

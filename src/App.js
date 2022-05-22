@@ -12,6 +12,8 @@ import Exchanges from "./components/ExchangesPage/Exchanges";
 import { CoinList } from "./config/api";
 import { NewsList } from "./config/api";
 import NewsInfo from "./components/NewsPage/NewsInfo";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./config/firebase-config";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,11 +22,16 @@ const darkTheme = createTheme({
 });
 
 function App() {
-  //Get Coins and pass to children using Context API
   const [coins, setCoins] = useState([]);
   const [news, setNews] = useState([]);
   const [coinTableLoading, setCoinTableLoading] = useState(false);
   const [newsDataLoading, setNewsDataLoading] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    type: "success",
+  });
+  const [user, setUser] = useState(null);
 
   const axios = require("axios");
 
@@ -47,13 +54,28 @@ function App() {
   useEffect(() => {
     fetchCoinList();
     fetchNewsList();
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) setUser(user);
+      else setUser(null);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log(user);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <DataContext.Provider
-        value={{ coins, coinTableLoading, news, newsDataLoading }}
+        value={{
+          coins,
+          coinTableLoading,
+          news,
+          newsDataLoading,
+          alert,
+          setAlert,
+          user,
+        }}
       >
         <div className="App">
           <Navbar>

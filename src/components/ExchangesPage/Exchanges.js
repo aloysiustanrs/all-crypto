@@ -47,7 +47,7 @@ const Exchanges = () => {
   const priceOfBitcoin = coins[0]?.current_price;
 
   return (
-    <Container sx={{ textAlign: "center" }}>
+    <Container maxWidth="xl" sx={{ textAlign: "center" }}>
       <Typography variant="h4" sx={{ mt: 4 }}>
         List Of Cryptocurrency Exchanges
       </Typography>

@@ -54,7 +54,7 @@ const NewsInfo = () => {
   };
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Typography variant="h4" sx={{ mt: 4, textAlign: "center" }}>
         Cryptocurrency Prices by Market Cap
       </Typography>

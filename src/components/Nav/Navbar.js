@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { styled } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
-import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-
-import { Button } from "@mui/material";
+import {
+  CssBaseline,
+  Box,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+} from "@mui/material";
 import { mainListItems } from "./NavListItems";
-
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-
 import { Link } from "react-router-dom";
+import LoginButtonWithModal from "../Authentication/LoginButtonWithModal";
+import { DataContext } from "../../contexts/DataContext";
+import UserData from "../Authentication/UserData";
 
 const drawerWidth = 240;
 
@@ -66,6 +67,9 @@ const Drawer = styled(MuiDrawer, {
 
 const Navbar = ({ children }) => {
   const [open, setOpen] = useState(false);
+
+  const { user } = useContext(DataContext);
+
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -102,9 +106,7 @@ const Navbar = ({ children }) => {
               Crypto Daily
             </Typography>
           </Link>
-          <Button variant="contained" sx={{ ml: "auto" }}>
-            Login
-          </Button>
+          {user ? <UserData /> : <LoginButtonWithModal />}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
