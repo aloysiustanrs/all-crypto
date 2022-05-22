@@ -51,7 +51,6 @@ const Login = ({ handleClose }) => {
       }}
     >
       <TextField
-        id="outlined-basic"
         label="Email"
         variant="outlined"
         sx={{ marginTop: "20px" }}
@@ -60,8 +59,8 @@ const Login = ({ handleClose }) => {
         }}
       />
       <TextField
-        id="outlined-basic"
         label="Password"
+        type="password"
         variant="outlined"
         onChange={(e) => {
           setPassword(e.target.value);

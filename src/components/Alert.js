@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { DataContext } from "../contexts/DataContext";
 import { Snackbar } from "@mui/material";
+import { Alert as AlertItem } from "@mui/material";
 
 const Alert = () => {
   const { alert, setAlert } = useContext(DataContext);
 
   //Snackbar
-
   const handleCloseAlert = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -17,10 +17,14 @@ const Alert = () => {
 
   return (
     <Snackbar
+      open={alert.open}
       autoHideDuration={3000}
       onClose={handleCloseAlert}
-      message={alert.message}
-    />
+    >
+      <AlertItem variant="filled" severity={alert.type}>
+        {alert.message}
+      </AlertItem>
+    </Snackbar>
   );
 };
 

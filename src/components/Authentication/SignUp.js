@@ -64,12 +64,14 @@ const SignUp = ({ handleClose }) => {
       />
       <TextField
         label="Password"
+        type="password"
         variant="outlined"
         onChange={(e) => setPassword(e.target.value)}
       />
 
       <TextField
         label="Confirm Password"
+        type="password"
         variant="outlined"
         onChange={(e) => setConfirmPassword(e.target.value)}
       />

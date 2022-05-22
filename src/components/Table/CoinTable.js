@@ -41,6 +41,7 @@ const CoinTable = () => {
       </Typography>
       <TextField
         label="Search"
+        type="search"
         variant="outlined"
         sx={{ marginTop: 6, marginBottom: 6, width: "100%" }}
         onChange={(e) => setSearch(e.target.value)}

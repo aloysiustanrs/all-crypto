@@ -45,8 +45,6 @@ const TextTitle = styled(Typography)(({ theme }) => ({
 const News = () => {
   const { news, newsDataLoading } = useContext(DataContext);
 
-  console.log(process.env.REACT_APP_GNEWS);
-
   return (
     <>
       {newsDataLoading ? (

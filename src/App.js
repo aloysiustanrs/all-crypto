@@ -35,6 +35,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [watchlist, setWatchlist] = useState([]);
 
+  console.log(alert);
+
   const axios = require("axios");
 
   const fetchCoinList = async () => {

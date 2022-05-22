@@ -60,6 +60,7 @@ const NewsInfo = () => {
       </Typography>
       <TextField
         label="Search news"
+        type="search"
         variant="outlined"
         sx={{ marginTop: 6, marginBottom: 6, width: "100%" }}
         onChange={(e) => setSearch(e.target.value)}

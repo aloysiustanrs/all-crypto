@@ -47,12 +47,13 @@ const Exchanges = () => {
   const priceOfBitcoin = coins[0]?.current_price;
 
   return (
-    <Container maxWidth="xl" sx={{ textAlign: "center" }}>
+    <Container maxWidth="lg" sx={{ textAlign: "center" }}>
       <Typography variant="h4" sx={{ mt: 4 }}>
         List Of Cryptocurrency Exchanges
       </Typography>
       <TextField
         label="Search"
+        type="search"
         variant="outlined"
         sx={{ marginTop: 6, marginBottom: 6, width: "100%" }}
         onChange={(e) => setSearch(e.target.value)}
@@ -63,7 +64,7 @@ const Exchanges = () => {
         </Container>
       ) : (
         <TableContainer>
-          <Table aria-label="simple table">
+          <Table>
             <TableHead>
               <TableRow>
                 <TableCell align="center">Rank</TableCell>

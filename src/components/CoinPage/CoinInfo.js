@@ -62,7 +62,7 @@ const CoinPage = () => {
 
       setAlert({
         open: true,
-        message: `${coin.name} Added to the Watchlist !`,
+        message: `${coin.name} added to the watchlist !`,
         type: "success",
       });
     } catch (error) {
@@ -84,7 +84,7 @@ const CoinPage = () => {
 
       setAlert({
         open: true,
-        message: `${coin.name} Removed from the Watchlist !`,
+        message: `${coin.name} removed from the watchlist !`,
         type: "success",
       });
     } catch (error) {
@@ -113,12 +113,11 @@ const CoinPage = () => {
           >
             <Grid item xs={11} lg={5}>
               <Typography
-                variant="h6"
+                variant="h4"
                 sx={{
                   letterSpacing: 1,
                   display: "flex",
                   alignItems: "center",
-                  fontSize: "50px",
                   fontWeight: "bold",
                 }}
               >
