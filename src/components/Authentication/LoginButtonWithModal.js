@@ -8,12 +8,7 @@ import {
   Typography,
   Divider,
 } from "@mui/material";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 import GoogleButton from "react-google-button";
@@ -61,7 +56,7 @@ const LoginButtonWithModal = () => {
   //Google Auth
   const googleProvider = new GoogleAuthProvider();
 
-  const { alert, setAlert } = useContext(DataContext);
+  const { setAlert } = useContext(DataContext);
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)

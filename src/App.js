@@ -9,11 +9,12 @@ import CoinTable from "./components/Table/CoinTable";
 import CoinPage from "./components/CoinPage/CoinInfo";
 import { DataContext } from "./contexts/DataContext";
 import Exchanges from "./components/ExchangesPage/Exchanges";
-import { CoinList } from "./config/api";
-import { NewsList } from "./config/api";
+import { CoinList, NewsList } from "./config/api";
 import NewsInfo from "./components/NewsPage/NewsInfo";
+import Alert from "./components/Alert";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./config/firebase-config";
+import { auth, db } from "./config/firebase-config";
+import { doc, onSnapshot } from "firebase/firestore";
 
 const darkTheme = createTheme({
   palette: {
@@ -32,6 +33,7 @@ function App() {
     type: "success",
   });
   const [user, setUser] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
 
   const axios = require("axios");
 
@@ -55,14 +57,28 @@ function App() {
     fetchCoinList();
     fetchNewsList();
 
+    if (user) {
+      const coinRef = doc(db, "watchlist", user?.uid);
+      var unsubscribe = onSnapshot(coinRef, (coin) => {
+        if (coin.exists()) {
+          console.log(coin.data().coins);
+          setWatchlist(coin.data().coins);
+        } else {
+          console.log("No Items in Watchlist");
+        }
+      });
+
+      return () => {
+        unsubscribe();
+      };
+    }
+
     onAuthStateChanged(auth, (user) => {
       if (user) setUser(user);
       else setUser(null);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  console.log(user);
+  }, [user]);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -75,9 +91,11 @@ function App() {
           alert,
           setAlert,
           user,
+          watchlist,
         }}
       >
         <div className="App">
+          <Alert />
           <Navbar>
             <Routes>
               <Route
