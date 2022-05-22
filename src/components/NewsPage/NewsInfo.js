@@ -86,7 +86,7 @@ const NewsInfo = () => {
                           maxHeight: "120px",
                           maxWidth: "120px",
                         }}
-                        src={newsItem?.urlToImage}
+                        src={newsItem?.image}
                         alt={newsItem?.name}
                       />
                     </NewsCard>

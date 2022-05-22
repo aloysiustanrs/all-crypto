@@ -77,7 +77,7 @@ const News = () => {
                       maxHeight: "120px",
                       maxWidth: "120px",
                     }}
-                    src={news[0]?.urlToImage}
+                    src={news[0]?.image}
                     alt={news[0]?.name}
                   />
                 </NewsCard>
@@ -96,7 +96,7 @@ const News = () => {
                       maxHeight: "120px",
                       maxWidth: "120px",
                     }}
-                    src={news[1]?.urlToImage}
+                    src={news[1]?.image}
                     alt={news[1]?.name}
                   />
                 </NewsCard>
@@ -115,7 +115,7 @@ const News = () => {
                       maxHeight: "120px",
                       maxWidth: "120px",
                     }}
-                    src={news[2]?.urlToImage}
+                    src={news[2]?.image}
                     alt={news[2]?.name}
                   />
                 </NewsCard>
