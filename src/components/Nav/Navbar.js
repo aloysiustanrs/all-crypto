@@ -103,7 +103,7 @@ const Navbar = ({ children }) => {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Crypto Daily
+              All Crypto
             </Typography>
           </Link>
           {user ? <UserData /> : <LoginButtonWithModal />}
