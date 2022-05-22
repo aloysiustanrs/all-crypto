@@ -138,7 +138,7 @@ const CoinTable = () => {
 
       <Stack spacing={2} alignItems="center" marginTop={10} marginBottom={10}>
         <Pagination
-          count={10}
+          count={25}
           color="primary"
           onChange={(event, pageNumber) => {
             setPage(pageNumber);
