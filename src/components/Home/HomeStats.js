@@ -12,15 +12,8 @@ const StatCard = styled(Card)`
 `;
 
 const HomeStats = ({ stats }) => {
-  let coinPercentageChange = stats.total_volume.usd;
-  let color = "";
-  if (coinPercentageChange > 0) {
-    color = "#93E318";
-  } else if (coinPercentageChange < 0) {
-    color = "#FE4017";
-  } else {
-    color = "white";
-  }
+  let coinPercentageChange = stats.market_cap_change_percentage_24h_usd;
+
   return (
     <>
       <Divider sx={{ marginY: 5 }} />
@@ -66,7 +59,10 @@ const HomeStats = ({ stats }) => {
             <Typography variant="subtitle2" mb={1}>
               Total Market Cap % Change in last 24 hours:
             </Typography>
-            <Typography variant="h6" sx={{ color: color }}>
+            <Typography
+              variant="h6"
+              sx={{ color: coinPercentageChange > 0 ? "#93E318" : "#FE4017" }}
+            >
               {millify(`${stats.market_cap_change_percentage_24h_usd}`, {
                 precision: 2,
               })}
